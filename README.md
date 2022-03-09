@@ -1,4 +1,4 @@
-# DIALOG-BOX_Sprites
+# DIALOG-BOX_Plano
 
 Plataforma: **SEGA Mega Drive/Genesis**
 

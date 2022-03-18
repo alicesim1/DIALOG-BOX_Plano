@@ -4,7 +4,7 @@ Plataforma: **SEGA Mega Drive/Genesis**
 
 **Sistema de cuadros de dialogos! Por sistema de PLANOS 100% Version Española V.1.0**
 
-![Dialogo](https://raw.githubusercontent.com/alicesim1/DIALOG-BOX_Sprites/master/temp/Captura.PNG)
+![Dialogo](https://raw.githubusercontent.com/alicesim1/DIALOG-BOX_Plano/master/temp/Captura.png)
 
 ## Botones: ##
 

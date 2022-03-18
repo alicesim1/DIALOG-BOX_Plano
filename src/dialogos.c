@@ -104,13 +104,14 @@ void dialogo(u16 x,u16 y,u8 ancho, u8 alto, u16 diag_ind,u8 diag_pal,u8 planoAB)
 	
 	
 	VDP_loadTileSet(&dig_marco,diag_ind,CPU);
-	
+	//sin comprimir:48,4 KB (49.636 bytes)
+	//   comprimido:46,1 KB (47.232 bytes)
 	//descomprimimos TilSet
-	TileSet *t = unpackTileSet(&font16, NULL);
+	//TileSet *t = unpackTileSet(&font16, NULL);
 	//KLog_U1("t->numTile: ",t->numTile);//numTile:384
 	u16 Tilelienzo = diag_ind+3;
-	DMA_queueDmaFast(DMA_VRAM,(void *)t->tiles,Tilelienzo<<5,16,2);
-	//DMA_queueDmaFast(DMA_VRAM,(void *)font16.tiles,Tilelienzo<<5,16,2);
+	//DMA_queueDmaFast(DMA_VRAM,(void *)t->tiles,Tilelienzo<<5,16,2);
+	DMA_queueDmaFast(DMA_VRAM,(void *)font16.tiles,Tilelienzo<<5,16,2);
 	
 	//--------Marco Esquinas---------------------------------------------------------
 	
@@ -190,13 +191,13 @@ void dialogo(u16 x,u16 y,u8 ancho, u8 alto, u16 diag_ind,u8 diag_pal,u8 planoAB)
 			//----No se puede comprimir----Dirección del búfer de origen., Dirección de destino VRAM / CRAM / VSRAM.
 			//DMA_queueDma(DMA_VRAM, (void *)yourtileset.tiles + yourtileindexinthetileset * 32, yourvramtileindex * 32, 16, 2);
 			
-			//DMA_queueDmaFast(DMA_VRAM,(void *)font16.tiles+ c    *32,ind<<5,16,2);ind++;//0>1    (2>3)
+			DMA_queueDmaFast(DMA_VRAM,(void *)font16.tiles+ c    *32,ind<<5,16,2);ind++;//0>1    (2>3)
 			//ancho> 128/8= 16 tiles | situamos el origen segunda fila de tiles 8x8, parte inferior de chara 8x16
-			//DMA_queueDmaFast(DMA_VRAM,(void *)font16.tiles+(c+16)*32,ind<<5,16,2);ind++;//1>2... (3>4...)
+			DMA_queueDmaFast(DMA_VRAM,(void *)font16.tiles+(c+16)*32,ind<<5,16,2);ind++;//1>2... (3>4...)
 			
-			DMA_queueDmaFast(DMA_VRAM,(void *)t->tiles+ c    *32,ind<<5,16,2);ind++;//0>1    (2>3)
+			//DMA_queueDmaFast(DMA_VRAM,(void *)t->tiles+ c    *32,ind<<5,16,2);ind++;//0>1    (2>3)
 			//ancho> 128/8= 16 tiles | situamos el origen segunda fila de tiles 8x8, parte inferior de chara 8x16
-			DMA_queueDmaFast(DMA_VRAM,(void *)t->tiles+(c+16)*32,ind<<5,16,2);ind++;//1>2... (3>4...)
+			//DMA_queueDmaFast(DMA_VRAM,(void *)t->tiles+(c+16)*32,ind<<5,16,2);ind++;//1>2... (3>4...)
 			
 			SYS_doVBlankProcess();
 
@@ -229,7 +230,7 @@ void dialogo(u16 x,u16 y,u8 ancho, u8 alto, u16 diag_ind,u8 diag_pal,u8 planoAB)
 	
 	
 	//liberamos el TileSet de la fuente 8x16 ASCII de la RAM
-	MEM_free(t);
+	//MEM_free(t);
 	
 	
 	gat=TRUE;

@@ -1,7 +1,7 @@
 #ifndef _GLOBAL_H
 #define _GLOBAL_H
 //------------------------------------------------------------------------------------------
-#include "../res/basicos.h"//fuente, pinguno jug, cursor,
+#include "basicos.h"//fuente, pinguno jug, cursor,
 
 //-----------------------------------------------
 
